@@ -1,0 +1,118 @@
+package main;
+
+
+
+import java.util.logging.Logger;
+
+import org.spongepowered.api.Game;
+import org.spongepowered.api.entity.player.Player;
+import org.spongepowered.api.event.Subscribe;
+import org.spongepowered.api.event.entity.player.PlayerChatEvent;
+import org.spongepowered.api.event.entity.player.PlayerDeathEvent;
+import org.spongepowered.api.event.network.PlayerConnectionEvent;
+import org.spongepowered.api.event.state.ServerStartingEvent;
+import org.spongepowered.api.plugin.Plugin;
+
+import com.google.inject.Inject;
+
+
+@Plugin(id = "Randomid", name = "CommandsOverhall", version = "0.1")
+public class main {
+   
+	@Inject
+	Game game;
+    
+    @Inject
+	Logger logger;
+
+    @Inject
+    Player player;
+    
+	// Ahead is the code for the servercore chatbot
+
+
+	
+	
+	@Subscribe
+	public void MainChat(PlayerChatEvent event) {
+    if(event.getMessage().equals("hell"));
+    else if(event.getMessage().equals("shit"));
+    else if(event.getMessage().equals("-----"));
+    else if(event.getMessage().equals("-----"));
+    else if(event.getMessage().equals("----"));
+   
+    event.setCancelled(true);
+    
+
+	}
+	
+	@Subscribe
+	public void DeathBroadcast(PlayerDeathEvent event) {
+		
+		
+	}
+	
+	
+	
+	@Subscribe
+	public void Connect1(PlayerConnectionEvent event) {
+		
+		int ping = event.getConnection().getPing();
+		
+		player.sendMessage("Your Ping is: " + event.getConnection().getPing());
+		
+	}
+	
+	
+	
+	
+	@Subscribe
+	public void C1(PlayerChatEvent event) {
+	
+	
+	if(event.getMessage().equals("ping"));
+	
+	
+	
+	event.getUser().sendMessage("" + player.getConnection().getPing());
+	event.setNewMessage("Helped By CommandsOverhaul ");
+	
+	
+	
+	if(event.getMessage().equals("ver"));
+	
+	player.sendMessage("Server Ver (Sponge Ver 1.1+) - Plugin Ver (Early Alpha Dev 1/2)"); 
+	
+	
+	if(event.getMessage().equals("debug"));
+	
+	player.sendMessage("INFO: This is a dev Build We Only offer support on Core Features of Dev builds");
+	
+	
+	
+	}
+	
+	@Subscribe
+	public void onstartevent(ServerStartingEvent event) {
+	
+	logger.info("Commands Overhall Has Loaded, note! You are loading a Dev Version, You may inconter some errors");
+		
+	
+	}
+	
+		
+	
+	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
