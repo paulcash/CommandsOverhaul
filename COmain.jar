@@ -12,6 +12,9 @@ import org.spongepowered.api.event.entity.player.PlayerDeathEvent;
 import org.spongepowered.api.event.network.PlayerConnectionEvent;
 import org.spongepowered.api.event.state.ServerStartingEvent;
 import org.spongepowered.api.plugin.Plugin;
+import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.Texts;
+import org.spongepowered.api.text.format.TextColors;
 
 import com.google.inject.Inject;
 
@@ -37,9 +40,9 @@ public class main {
 	public void MainChat(PlayerChatEvent event) {
     if(event.getMessage().equals("hell"));
     else if(event.getMessage().equals("shit"));
-    else if(event.getMessage().equals("-----"));
-    else if(event.getMessage().equals("-----"));
-    else if(event.getMessage().equals("----"));
+    else if(event.getMessage().equals("bitch"));
+    else if(event.getMessage().equals("fuck"));
+    else if(event.getMessage().equals("nigga"));
    
     event.setCancelled(true);
     
@@ -59,8 +62,7 @@ public class main {
 		
 		int ping = event.getConnection().getPing();
 		
-		player.sendMessage("Your Ping is: " + event.getConnection().getPing());
-		
+		Texts.builder("ping: " + player.getConnection().getPing()).color(TextColors.GOLD).build();
 	}
 	
 	
@@ -74,23 +76,53 @@ public class main {
 	
 	
 	
-	event.getUser().sendMessage("" + player.getConnection().getPing());
-	event.setNewMessage("Helped By CommandsOverhaul ");
-	
+	Texts.builder("Your ping is: " + event.getUser().getConnection().getPing()).color(TextColors.GOLD).build();
 	
 	
 	if(event.getMessage().equals("ver"));
 	
-	player.sendMessage("Server Ver (Sponge Ver 1.1+) - Plugin Ver (Early Alpha Dev 1/2)"); 
+	Texts.builder("The Version of this plugin is: 0.1").color(TextColors.GOLD).build();
 	
 	
 	if(event.getMessage().equals("debug"));
 	
-	player.sendMessage("INFO: This is a dev Build We Only offer support on Core Features of Dev builds");
+	
+	Texts.builder("INFO: This is a Very early dev build and currently i do not offer support for dev builds before 0.2 Update Please").color(TextColors.GOLD).build();
+	
+	
+	
+	
+	if(event.getMessage().equals("serverinfo"));
+	
+	Texts.builder("Max Players: " + event.getGame().getServer().getMaxPlayers()).color(TextColors.GOLD).build();;
+	
+	Texts.builder("Motd: " + event.getGame().getServer().getMotd()).color(TextColors.GOLD).build();
+	
+	Texts.builder("Worlds: " + event.getGame().getServer().getWorlds()).color(TextColors.GOLD).build();
+	
+	
+	if(event.getMessage().equals("playerinfo"));
+	
+
+	Texts.builder("Your name is: " + player.getName()).color(TextColors.GOLD).build();
+	
+	Texts.builder("Display name: " + player.getDisplayNameData()).color(TextColors.GOLD).build();
+	
+	Texts.builder("Health: " + player.getHealthData()).color(TextColors.GOLD).build();
+	
+	Texts.builder("You are in: " + player.getWorld() + " World").color(TextColors.GOLD).build();
+	
+	
+	Texts.builder("").color(TextColors.GOLD).build();
+	
 	
 	
 	
 	}
+	
+	
+	
+	
 	
 	@Subscribe
 	public void onstartevent(ServerStartingEvent event) {
